@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { TEST_ERROR, TEST_SUCCESS } from "./redux/actions/testAction";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, BrowserRouter } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import ErrorPage from "./pages/ErrorPage";
 
@@ -11,10 +11,12 @@ function App() {
 
   return (
     <div className="container mx-auto h-screen py-24">
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route component={ErrorPage} />
-      </Switch>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route component={ErrorPage} />
+        </Switch>
+      </BrowserRouter>
       <div className="bg-blue-500 w-48 h-48 flex items-center flex-col justify-center  text-gray-900 font-bold text-2xl rounded-full px-4 py-6 mx-auto">
         {testError ? (
           <span className="">Errrrrrrrrrrror</span>
