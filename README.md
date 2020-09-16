@@ -1,5 +1,5 @@
-### Basic skeleton for react-redux-tailwind and firebase project
+### whatsapp clone. Final project can be viewed here https://whatsapp-clone-8dd3c.web.app/
 
-A starter template intended to get you started with a basic react-redux-tailwind project without having to worry about configuration.
+## I used React/Redux/TailwindCSS for frontend and Firebase for backend.
 
-## npm install npm start to start
+## You won't be able to run this project if you clone it, because i hid my firebase config file for security reasons. For future me reading this, firebase project is called whatsapp-clone.
