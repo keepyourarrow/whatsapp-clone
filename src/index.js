@@ -24,22 +24,21 @@ const rrfProps = {
 };
 
 // to show everything only when we are connected to firebase Auth
-// function AuthIsLoaded({ children }) {
-//   const auth = useSelector((state) => state.firebase.auth);
-//   if (!auth.isLoaded) return <div>Loading Screen...</div>;
-//   return children;
-// }
+function AuthIsLoaded({ children }) {
+  const auth = useSelector((state) => state.firebase.auth);
+  if (!auth.isLoaded) return <div className="absolute"></div>;
+  return children;
+}
 
 ReactDOM.render(
   <Provider store={store}>
     <ReactReduxFirebaseProvider {...rrfProps}>
-      {/* <BrowserRouter> */}
-      {/* <AuthIsLoaded> */}
-      <App />
-      {/* </AuthIsLoaded> */}
-      {/* </BrowserRouter> */}
+      <BrowserRouter>
+        <AuthIsLoaded>
+          <App />
+        </AuthIsLoaded>
+      </BrowserRouter>
     </ReactReduxFirebaseProvider>
-    ,
   </Provider>,
   document.getElementById("root")
 );

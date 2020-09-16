@@ -1,4 +1,5 @@
-import * as firebase from "firebase/app";
+// import * as firebase from "firebase";
+import firebase from "firebase/app";
 import "firebase/storage";
 import "firebase/firestore";
 
@@ -16,11 +17,13 @@ export const firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+//database
+const db = firebase.firestore();
+
+// enabling google auth
 
 // storage if you want to store files
 const storage = firebase.storage();
-//database
-const db = firebase.firestore();
 const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 
-export { storage, db, timestamp };
+export { storage, timestamp, firebase, db };
