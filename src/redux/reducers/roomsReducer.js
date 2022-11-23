@@ -13,7 +13,7 @@ const initState = {
 };
 
 //  Delete and replace with firebase later
-export const roomsReducer = (state = initState, action) => {
+const roomsReducer = (state = initState, action) => {
   const { type, payload } = action;
 
   switch (type) {
@@ -49,3 +49,5 @@ export const roomsReducer = (state = initState, action) => {
       return state;
   }
 };
+
+export default roomsReducer;

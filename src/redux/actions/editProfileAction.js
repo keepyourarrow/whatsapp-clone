@@ -1,4 +1,4 @@
-import { timestamp, db, storage } from "../../config/firebaseConfig";
+import { timestamp, db, storage } from "config/firebaseConfig";
 import {
   LOADING,
   NOT_LOADING,

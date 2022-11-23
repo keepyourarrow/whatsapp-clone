@@ -28,6 +28,9 @@ export const REMOVE_ERROR = "REMOVE_ERROR";
 export const LOADING = "LOADING";
 export const NOT_LOADING = "NOT_LOADING";
 
+// modal
+export const TOGGLE_MODAL = "TOGGLE_MODAL";
+
 // this function is for createRoom action so i dont have to retype the same thing all the time
 export function setRoom(
   roomId,
@@ -43,6 +46,7 @@ export function setRoom(
     createdBy,
     name: roomName,
     photo,
+    lastMessageSentAt: Date.now(),
     participants: [
       {
         name: createdBy,

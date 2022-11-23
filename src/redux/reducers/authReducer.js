@@ -11,7 +11,7 @@ const initState = {
   authError: "",
 };
 
-export const authReducer = (state = initState, action) => {
+const authReducer = (state = initState, action) => {
   const { type, err } = action;
   let message;
 
@@ -48,3 +48,6 @@ export const authReducer = (state = initState, action) => {
       return state;
   }
 };
+
+
+export default authReducer;

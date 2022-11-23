@@ -7,13 +7,13 @@ import config from "./config";
 
 // replace these values with your own!
 export const firebaseConfig = {
-  apiKey: config.firebase_API_KEY,
-  authDomain: config.firebase_AUTH_DOMAIN,
-  databaseURL: config.firebase_DATABASE_URL,
-  projectId: config.firebase_PROJECT_ID,
-  storageBucket: config.firebase_STORAGE_BUCKET,
-  messagingSenderId: config.firebase_MESSAGING_SENDER_ID,
-  appId: config.firebase_API_ID,
+  apiKey: config.apiKey,
+  authDomain: config.authDomain,
+  databaseURL: config.databaseURL,
+  projectId: config.projectId,
+  storageBucket: config.storageBucket,
+  messagingSenderId: config.messagingSenderId,
+  appId: config.appId,
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

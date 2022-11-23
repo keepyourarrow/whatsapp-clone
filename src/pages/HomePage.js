@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
-import Sidebar from "../components/Sidebar/Sidebar";
-import Chat from "../components/Chat/Chat";
 import { useSelector, useDispatch } from "react-redux";
-import { Notifications } from "../components/reusable/Notifications";
-import { LoadingGifSVG } from "../assets/images/loadingGif";
 import { AnimatePresence } from "framer-motion";
+
+import Sidebar from "features/Sidebar";
+import Chat from "features/Chat";
+import ModalWrapper from "components/ui/Modal/ModalWrapper";
+import { Notifications } from "components/ui/Notifications";
+
+import LoadingGif from "assets/icons/LoadingGif";
 
 const HomePage = () => {
   const dispatch = useDispatch();
   const message = useSelector((state) => state.notifications.message);
   const loading = useSelector((state) => state.notifications.loading);
+  const {open: modalOpen, modalExitBtn, modalComponent} = useSelector((state) => state.modal);
+
   const [openRoomInfo, setOpenRoomInfo] = useState(false);
 
   useEffect(() => {
@@ -21,11 +26,15 @@ const HomePage = () => {
     }
   }, [message]);
 
+  const toggleModal = () => {
+    dispatch({type: "TOGGLE_MODAL"});
+  }
+
   return (
     <>
       {loading && (
         <Notifications message={loading}>
-          <LoadingGifSVG className="w-10 h-10" />{" "}
+          <LoadingGif className="w-10 h-10" />{" "}
         </Notifications>
       )}
       <AnimatePresence>
@@ -68,6 +77,14 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+
+      <AnimatePresence>
+        {modalOpen && (
+          <ModalWrapper toggleModal={toggleModal} exitButton={modalExitBtn}>
+            {React.cloneElement(modalComponent,{toggleModal: toggleModal})}
+          </ModalWrapper>
+        )}
+      </AnimatePresence>
     </>
   );
 };

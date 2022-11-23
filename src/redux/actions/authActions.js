@@ -1,4 +1,4 @@
-import { timestamp, db, firebase } from "../../config/firebaseConfig";
+import { timestamp, db, firebase } from "config/firebaseConfig";
 import {
   DESELECT_ACTIVE,
   DESELECT_ACTIVE_ROOM,

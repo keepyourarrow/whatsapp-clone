@@ -18,7 +18,7 @@ const initState = {
   loadingMessage: "",
 };
 
-export const notificationsReducer = (state = initState, action) => {
+const notificationsReducer = (state = initState, action) => {
   const { type, payload } = action;
   let mes;
 
@@ -65,3 +65,5 @@ export const notificationsReducer = (state = initState, action) => {
       return state;
   }
 };
+
+export default notificationsReducer;

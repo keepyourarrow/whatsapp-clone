@@ -7,7 +7,7 @@ const initState = {
   activeRoom: {},
 };
 
-export const activeRoomReducer = (state = initState, action) => {
+const activeRoomReducer = (state = initState, action) => {
   const { type, payload } = action;
 
   switch (type) {
@@ -20,3 +20,5 @@ export const activeRoomReducer = (state = initState, action) => {
       return state;
   }
 };
+
+export default activeRoomReducer;

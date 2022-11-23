@@ -1,4 +1,4 @@
-import { firebase, storage, db } from "../../config/firebaseConfig";
+import { firebase, storage, db } from "config/firebaseConfig";
 import { v4 as uuidv4 } from "uuid";
 import {
   DELETE_ROOM_SUCCESS,
@@ -184,6 +184,7 @@ export const sendMessage = (msg) => {
       .doc(currentID)
       .update({
         ...currentRoom,
+        lastMessageSentAt: Date.now(),
         messages: updatedMessages,
         active: firebase.firestore.FieldValue.delete(),
         participants:
@@ -200,6 +201,7 @@ export const sendMessage = (msg) => {
           type: SELECT_ACTIVE_ROOM,
           payload: {
             ...currentRoom,
+            lastMessageSentAt: Date.now(),
             messages: updatedMessages,
             participants:
               updatedParticipants === null
@@ -219,10 +221,13 @@ export const deleteMessage = (msg) => {
     const messages = getState().activeRoom.activeRoom.messages;
     let updatedMessages = messages.filter((message) => message.id !== msg.id);
 
+    let lastMessageSentAt = updatedMessages[updatedMessages.length - 1].date;
+
     db.collection("rooms")
       .doc(currentID)
       .update({
         ...currentRoom,
+        lastMessageSentAt,
         messages: updatedMessages,
       })
       .then(() => {
@@ -234,6 +239,7 @@ export const deleteMessage = (msg) => {
           type: SELECT_ACTIVE_ROOM,
           payload: {
             ...currentRoom,
+            lastMessageSentAt,
             messages: updatedMessages,
           },
         });
