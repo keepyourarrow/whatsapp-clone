@@ -1,4 +1,5 @@
-## whatsapp clone of https://whatsapp-clone-8dd3c.web.app/
+# Whatsapp clone:
+> https://whatsapp-clone-8dd3c.web.app/
 
 # Technology:
 > React/Redux/TailwindCSS for frontend and Firebase for backend.
